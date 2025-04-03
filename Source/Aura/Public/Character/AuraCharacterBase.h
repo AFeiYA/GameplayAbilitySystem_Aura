@@ -20,7 +20,7 @@ protected:
 	virtual void BeginPlay() override;
 	
 	// TObjectPtr: Optimized
-	// Access tracking means how ofter a pointer is accessed or dereferenced
+	// Access tracking means how often a pointer is accessed or dereferenced
 	// Lazy loading load while needed. 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;
