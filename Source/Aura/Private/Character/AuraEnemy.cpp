@@ -38,6 +38,7 @@ void AAuraEnemy::UnHighlightActor()
 void AAuraEnemy::BeginPlay()
 {
 	Super::BeginPlay();
+	UE_LOG(LogTemp, Warning, TEXT("AAuraEnemy::BeginPlay()"));
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
