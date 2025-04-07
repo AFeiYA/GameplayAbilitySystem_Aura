@@ -74,11 +74,11 @@ void AAuraPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	check(AuraContext);
-	// subsystem is singleton only one can be existed in  
-	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	//assert 
-	check(Subsystem);
-	Subsystem->AddMappingContext(AuraContext,0);
+	// subsystem is singleton only one can be existed in  	 
+	if(UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+	{
+		Subsystem->AddMappingContext(AuraContext,0);
+	}
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;
 
