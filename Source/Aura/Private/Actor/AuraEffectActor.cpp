@@ -33,7 +33,7 @@ void AAuraEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 		MutableAuraAttributeSet->SetHealth(AuraAttributeSet->GetHealth() + 30.f);
 		Destroy();
 	} 
-}
+} 
 
 void AAuraEffectActor::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
