@@ -4,8 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "UI/WidgetController/AuraWidgetController.h"
+#include "Windows/AllowWindowsPlatformTypes.h"
 #include "OverlayWidgetController.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSingnature, float, NewHealth);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxHealthChangedSingnature, float, NewMaxHealth);
 /**
  * 
  */
@@ -13,5 +16,14 @@ UCLASS()
 class AURA_API UOverlayWidgetController : public UAuraWidgetController
 {
 	GENERATED_BODY()
+public:
+	virtual void BroadcastInitialValues() override;
+
+	UPROPERTY(BlueprintAssignable, Category="GAS|Attributes")
+	FOnHealthChangedSingnature OnHealthChanged;
 	
+	UPROPERTY(BlueprintAssignable, Category="GAS|Attributes")
+	FOnMaxHealthChangedSingnature OnMaxHealthChanged;
+	
+
 };
