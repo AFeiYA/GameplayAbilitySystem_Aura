@@ -28,8 +28,24 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* OtherActor, TSubclassOf<UGame
 
 void AAuraEffectActor::OnOverlap(AActor* OtherActor)
 {
+	if (InstantEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
+	{
+		ApplyEffectToTarget(OtherActor, InstantGameplayEffectClass);
+	}
+	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
+	{
+		ApplyEffectToTarget(OtherActor, DurationGameplayEffectClass);
+	}
 }
 
 void AAuraEffectActor::OnEnterOverlap(AActor* OtherActor)
 {
+	if (InstantEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEnterOverlap)
+	{
+		ApplyEffectToTarget(OtherActor, InstantGameplayEffectClass);
+	}
+	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEnterOverlap)
+	{
+		ApplyEffectToTarget(OtherActor, DurationGameplayEffectClass);
+	}
 }
