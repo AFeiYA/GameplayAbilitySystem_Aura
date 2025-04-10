@@ -21,7 +21,7 @@ enum class EEffectApplicationPolicy
 UENUM(BlueprintType)
 enum class EEffectRemovalPolicy
 {
-	RemoveOnEnterOverlap,
+	RemoveOnEndOverlap,
 	DoNotRemove
 };
 
@@ -66,7 +66,7 @@ protected:
 	EEffectApplicationPolicy InfiniteEffectApplicationPolicy = EEffectApplicationPolicy::DoNotApply;
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="Applied Effects")
-	EEffectRemovalPolicy InfiniteEffectRemovalPolicy = EEffectRemovalPolicy::RemoveOnEnterOverlap;
+	EEffectRemovalPolicy InfiniteEffectRemovalPolicy = EEffectRemovalPolicy::RemoveOnEndOverlap;
 
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
 };
