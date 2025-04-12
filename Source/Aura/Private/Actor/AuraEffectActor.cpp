@@ -22,7 +22,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* OtherActor, TSubclassOf<UGame
 	
 	auto EffectContextHandle = TargetAsc->MakeEffectContext();
 	EffectContextHandle.AddSourceObject(this);
-	const auto EffectSpecHandle = TargetAsc->MakeOutgoingSpec(GameplayEffectClass, 1.f, EffectContextHandle );
+	const auto EffectSpecHandle = TargetAsc->MakeOutgoingSpec(GameplayEffectClass, EffectLevel, EffectContextHandle );
 	const FActiveGameplayEffectHandle ActiveEffectHandle = TargetAsc->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
 	const bool bIsInfinite = EffectSpecHandle.Data.Get()->Def.Get()->DurationPolicy == EGameplayEffectDurationType::Infinite;
 	if (bIsInfinite && InfiniteEffectRemovalPolicy == EEffectRemovalPolicy::RemoveOnEndOverlap)
