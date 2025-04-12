@@ -71,10 +71,10 @@ void UAuraAttributeSet::SetEffectProperties(const FGameplayEffectModCallbackData
 void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data); 
-	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Health from GetHealth(): %f\n, Magnitude: %f"), GetHealth(), Data.EvaluatedData.Magnitude);
-	}
+	// if (Data.EvaluatedData.Attribute == GetHealthAttribute())
+	// {
+	// 	UE_LOG(LogTemp, Warning, TEXT("Health from GetHealth(): %f\n, Magnitude: %f"), GetHealth(), Data.EvaluatedData.Magnitude);
+	// }
 	FEffectProperties Props;
 	SetEffectProperties(Data, Props);
 }

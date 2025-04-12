@@ -9,7 +9,14 @@ void UAuraAbilitySystemComponent::AbilityActorInfoSet()
 }
 
 void UAuraAbilitySystemComponent::EffectApplied(UAbilitySystemComponent* AbilitySystemComponent,
-                                                const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle)
+                                                const FGameplayEffectSpec& EffectSpec,
+                                                FActiveGameplayEffectHandle ActiveEffectHandle)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, "EffectApplied for AbilitySystemComponent");
+	FGameplayTagContainer TagContainer;
+	EffectSpec.GetAllAssetTags(TagContainer);
+	for (const auto& Tag : TagContainer)
+	{
+		const FString Msg = FString::Printf(TEXT("Gameplay Tag: %s"), *Tag.ToString());
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, Msg);
+	}
 }
