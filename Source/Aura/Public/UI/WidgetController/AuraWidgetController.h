@@ -16,7 +16,7 @@ class UAbilitySystemComponent;
 USTRUCT(BlueprintType)// 声明为可在蓝图中使用的结构体
 struct FWidgetControllerParams
 {
-	GENERATED_BODY() // 必须的宏，生成反射代码
+	GENERATED_BODY()
 
 	FWidgetControllerParams() {}
 	FWidgetControllerParams(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
