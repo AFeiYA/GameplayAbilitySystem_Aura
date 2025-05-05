@@ -19,7 +19,6 @@ AAuraCharacter::AAuraCharacter()
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
-	UE_LOG(LogTemp, Warning, TEXT("CONSTRUCTOR: AAuraCharacter::AAuraCharacter()"));
 }
 
 void AAuraCharacter::InitAbilityActorInfo()
@@ -38,6 +37,7 @@ void AAuraCharacter::InitAbilityActorInfo()
 			  AuraHUD->InitOverlay(AuraPlayerController, AuraPlayerState,AbilitySystemComponent,AttributeSet);
 		  }
 	}
+	InitializePrimaryAttributes();
 }
 
 void AAuraCharacter::PossessedBy(AController* NewController)
@@ -51,7 +51,5 @@ void AAuraCharacter::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
 	//init on client
-	InitAbilityActorInfo();
-	
-	UE_LOG(LogTemp, Display, TEXT("OnRep_PlayerState"));
+	InitAbilityActorInfo();	
 }
