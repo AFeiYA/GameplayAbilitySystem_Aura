@@ -4,14 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "UI/WidgetController/AuraWidgetController.h"
-#include "AttriubteMenuWidgetController.generated.h"
+#include "AttributeMenuWidgetController.generated.h"
 
 /**
  * 
  */
 
 UCLASS()
-class AURA_API UAttriubteMenuWidgetController : public UAuraWidgetController
+class AURA_API UAttributeMenuWidgetController : public UAuraWidgetController
 {
 	GENERATED_BODY()
 public:
