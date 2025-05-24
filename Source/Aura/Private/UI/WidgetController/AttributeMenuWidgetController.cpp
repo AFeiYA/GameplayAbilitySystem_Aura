@@ -2,13 +2,23 @@
 
 
 #include "UI/WidgetController/AttributeMenuWidgetController.h"
-
-#include "AuraGameplayTags.h"
 #include "AbilitySystem/Data/AttributeInfo.h"
-#include "Animation/AnimRootMotionProvider.h"
 
 void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 {
+	UAuraAttributeSet* AuraAttributeSet = CastChecked<UAuraAttributeSet>(AttributeSet);
+	for (auto& Pair : AuraAttributeSet->TagsToAttributes)
+	{
+		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(Pair.Value()).AddLambda(
+			[this, Pair, AuraAttributeSet](const FOnAttributeChangeData& Data)
+			{
+				FAuraAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(Pair.Key);
+				Info.AttributeValue = Pair.Value().GetNumericValue(AuraAttributeSet);
+				AttributeInfoDelegate.Broadcast(Info);
+			}
+		);
+	}
+
 }
 
 void UAttributeMenuWidgetController::BroadcastInitialValues()
