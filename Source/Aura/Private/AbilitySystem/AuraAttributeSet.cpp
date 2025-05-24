@@ -12,13 +12,9 @@
 UAuraAttributeSet::UAuraAttributeSet()
 {
 	const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();
-	FAttributeSingature StrengthDelegate;
-	StrengthDelegate.BindStatic(GetStrengthAttribute);
-	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Strength, StrengthDelegate);
 
-	FAttributeSingature IntelligenceDelegate;
-	IntelligenceDelegate.BindStatic(GetIntelligenceAttribute);
-	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Intelligence, IntelligenceDelegate);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Strength, GetStrengthAttribute);
+	TagsToAttributes.Add(GameplayTags.Attributes_Primary_Intelligence, GetIntelligenceAttribute);
 }
 
 void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
